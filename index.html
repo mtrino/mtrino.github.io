@@ -52,7 +52,9 @@
     }
 
     * { box-sizing: border-box; }
+
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: var(--font-body);
@@ -107,7 +109,10 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .brand-mark svg { width: 1.25rem; height: 1.25rem; }
+    .brand-mark svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
 
     .nav-links {
       display: flex;
@@ -162,7 +167,7 @@
     }
 
     h1 {
-      margin: 1rem 0 1rem;
+      margin: 1rem 0;
       font-family: var(--font-display);
       font-size: clamp(2.8rem, 7vw, 5.4rem);
       line-height: 0.95;
@@ -177,7 +182,9 @@
       margin: 0;
     }
 
-    .hero-copy p + p { margin-top: 1rem; }
+    .hero-copy p + p {
+      margin-top: 1rem;
+    }
 
     .hero-actions {
       display: flex;
@@ -206,7 +213,9 @@
       box-shadow: var(--shadow-sm);
     }
 
-    .button-primary:hover { background: var(--color-primary-hover); }
+    .button-primary:hover {
+      background: var(--color-primary-hover);
+    }
 
     .button-secondary {
       border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
@@ -214,7 +223,9 @@
       color: var(--color-text);
     }
 
-    .button-secondary:hover { background: var(--color-surface-offset); }
+    .button-secondary:hover {
+      background: var(--color-surface-offset);
+    }
 
     .hero-card {
       background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 90%, white), var(--color-surface-offset));
@@ -258,6 +269,12 @@
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 1rem;
     }
 
@@ -325,13 +342,16 @@
 
     .timeline-item h3 { margin: 0 0 0.35rem; }
     .timeline-item h3 span { color: var(--color-text-muted); font-weight: 500; }
+
     .timeline-item ul {
       margin: 0.8rem 0 0;
       padding-left: 1.1rem;
       color: var(--color-text-muted);
     }
 
-    .timeline-item li + li { margin-top: 0.45rem; }
+    .timeline-item li + li {
+      margin-top: 0.45rem;
+    }
 
     .meta {
       font-size: 0.8rem;
@@ -346,14 +366,11 @@
       padding: 2rem 0 3rem;
       border-top: 1px solid var(--color-divider);
       color: var(--color-text-muted);
+      margin-top: 1rem;
     }
 
     .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
+      display: block;
     }
 
     :focus-visible {
@@ -435,7 +452,7 @@
 
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">View projects</a>
-            <a class="button button-secondary" href="mailto:mtrinanjan@gmail.com.com">Email</a>
+            <a class="button button-secondary" href="mailto:mtrinanjan@gmail.com">Email</a>
             <a class="button button-secondary" href="https://github.com/mtrino" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a class="button button-secondary" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
             <a class="button button-secondary" href="https://medium.com/@mtrinanjan" target="_blank" rel="noopener noreferrer">Blogs</a>
@@ -515,7 +532,7 @@
           <div>
             <h3>Data Scientist <span>· Victoria’s Secret &amp; Co.</span></h3>
             <p>
-              I work on applied ML systems with a strong focus on end-to-end ownership, especially in areas such as recommendation and recommendation systems with sparse data and embedding-driven decision systems.
+              I work on applied ML systems with a strong focus on end-to-end ownership, especially in areas such as recommendation and embedding-driven decision systems.
             </p>
             <ul>
               <li>Built and owned machine learning workflows tied to customer behavior and channel optimization.</li>
@@ -626,12 +643,12 @@
         <div>
           <h2 class="section-title">Contact</h2>
           <p>
-            Replace the links below with your actual profiles, resume, and project pages.
+            Reach out through the platforms below.
           </p>
         </div>
       </div>
 
-      <div class="grid-2">
+      <div class="contact-grid">
         <article class="card">
           <h3>Links</h3>
           <div class="chips">
@@ -639,14 +656,16 @@
             <a class="chip" href="https://www.linkedin.com/in/trinanjan-mitra/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a class="chip" href="mailto:mtrinanjan@gmail.com">Email</a>
             <a class="chip" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a>
-            <a class="button button-secondary" href="https://medium.com/@mtrinanjan" target="_blank" rel="noopener noreferrer">Blogs</a>
+            <a class="chip" href="https://medium.com/@mtrinanjan" target="_blank" rel="noopener noreferrer">Blogs</a>
           </div>
         </article>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div>© <span id="year"></span> Trinanjan Mitra</div>
-      <div>GitHub Pages.</div>
+      <div>Trinanjan Mitra · GitHub Pages</div>
     </div>
   </footer>
 
@@ -661,8 +680,6 @@
         theme = theme === 'dark' ? 'light' : 'dark';
         root.setAttribute('data-theme', theme);
       });
-
-      document.getElementById('year').textContent = new Date().getFullYear();
     })();
   </script>
 </body>
