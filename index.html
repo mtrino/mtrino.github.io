@@ -1,1 +1,677 @@
-<h1>My Portfolio</h1>
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trinanjan Mitra | Data Scientist</title>
+  <meta
+    name="description"
+    content="Trinanjan Mitra — Data Scientist building ranking systems, recommendation models, and research-driven machine learning projects from first principles."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root, [data-theme="light"] {
+      --color-bg: #f7f6f2;
+      --color-surface: #f9f8f5;
+      --color-surface-2: #fbfbf9;
+      --color-surface-offset: #f3f0ec;
+      --color-border: #d4d1ca;
+      --color-divider: #dcd9d5;
+      --color-text: #28251d;
+      --color-text-muted: #6f6b63;
+      --color-text-faint: #9f9a92;
+      --color-primary: #01696f;
+      --color-primary-hover: #0c4e54;
+      --shadow-sm: 0 1px 2px rgb(40 37 29 / 0.06);
+      --shadow-md: 0 10px 30px rgb(40 37 29 / 0.08);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.75rem;
+      --radius-lg: 1rem;
+      --radius-xl: 1.5rem;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #171614;
+      --color-surface: #1c1b19;
+      --color-surface-2: #22211f;
+      --color-surface-offset: #201f1d;
+      --color-border: #393836;
+      --color-divider: #2b2a28;
+      --color-text: #e0ddd7;
+      --color-text-muted: #aaa59c;
+      --color-text-faint: #77726b;
+      --color-primary: #4f98a3;
+      --color-primary-hover: #69b2bc;
+      --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.25);
+      --shadow-md: 0 10px 30px rgb(0 0 0 / 0.28);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      line-height: 1.65;
+      color: var(--color-text);
+      background:
+        radial-gradient(circle at top right, rgb(1 105 111 / 0.08), transparent 28%),
+        var(--color-bg);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 2rem), 1120px);
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(14px);
+      background: color-mix(in srgb, var(--color-bg) 82%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 4.5rem;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 0.75rem;
+      background: linear-gradient(135deg, var(--color-primary), color-mix(in srgb, var(--color-primary) 55%, black));
+      display: grid;
+      place-items: center;
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-mark svg { width: 1.25rem; height: 1.25rem; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--color-text);
+    }
+
+    .theme-toggle {
+      border: 1px solid color-mix(in srgb, var(--color-text) 12%, transparent);
+      background: var(--color-surface);
+      color: var(--color-text);
+      border-radius: 999px;
+      width: 2.7rem;
+      height: 2.7rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 2rem;
+      align-items: end;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.5rem 0.85rem;
+      border: 1px solid color-mix(in srgb, var(--color-primary) 16%, transparent);
+      border-radius: 999px;
+      color: var(--color-primary);
+      background: color-mix(in srgb, var(--color-primary) 7%, var(--color-surface));
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 1rem 0 1rem;
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 7vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.035em;
+      max-width: 10ch;
+      font-weight: 400;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .hero-copy p + p { margin-top: 1rem; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.6rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      min-height: 2.9rem;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+      transition: 180ms ease;
+    }
+
+    .button-primary {
+      background: var(--color-primary);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .button-primary:hover { background: var(--color-primary-hover); }
+
+    .button-secondary {
+      border-color: color-mix(in srgb, var(--color-text) 12%, transparent);
+      background: var(--color-surface);
+      color: var(--color-text);
+    }
+
+    .button-secondary:hover { background: var(--color-surface-offset); }
+
+    .hero-card {
+      background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 90%, white), var(--color-surface-offset));
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      margin: 0 0 0.75rem;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.4rem;
+    }
+
+    .section-head p {
+      max-width: 60ch;
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--color-surface);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.2rem;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--color-text-muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-size: 0.8rem;
+      background: var(--color-surface-offset);
+      border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+      color: var(--color-text-muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .timeline-item:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .timeline-date {
+      color: var(--color-text-faint);
+      font-size: 0.95rem;
+      padding-top: 0.1rem;
+    }
+
+    .timeline-item h3 { margin: 0 0 0.35rem; }
+    .timeline-item h3 span { color: var(--color-text-muted); font-weight: 500; }
+    .timeline-item ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+      color: var(--color-text-muted);
+    }
+
+    .timeline-item li + li { margin-top: 0.45rem; }
+
+    .meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .project-grid,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        flex-wrap: wrap;
+        padding: 0.75rem 0;
+      }
+
+      .hero {
+        padding-top: 3.5rem;
+      }
+
+      .hero-card,
+      .card {
+        padding: 1.2rem;
+      }
+
+      h1 {
+        max-width: 12ch;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Trinanjan Mitra home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 18 12 6l7 12"/>
+            <path d="M8.5 12h7"/>
+          </svg>
+        </span>
+        <span>Trinanjan Mitra</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch theme">◐</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Data Scientist · ML Systems · Ranking</div>
+          <h1>Building machine learning systems from first principles.</h1>
+          <p>
+            I’m Trinanjan Mitra, a data scientist working on ranking, recommendation, and channel optimization systems, with a growing research-driven body of work in language models, interpretability, and ML infrastructure.
+          </p>
+          <p>
+            This site is my public workspace: selected projects, technical writing, and experiments that connect applied ML experience with a longer-term shift toward research-oriented machine learning.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View projects</a>
+            <a class="button button-secondary" href="mailto:your-email@example.com">Email</a>
+            <a class="button button-secondary" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="button button-secondary" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Professional summary">
+          <h2 class="section-title" style="margin-top:0;">Current focus</h2>
+          <p>
+            At work, I focus on applied machine learning problems such as channel propensity and recommendation-style systems. Outside work, I’m building a portfolio around LLMs from scratch, tokenizer tooling, and research-style ML artifacts.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Ranking systems</span>
+            <span class="chip">Recommendation</span>
+            <span class="chip">Embeddings</span>
+            <span class="chip">LLMs</span>
+            <span class="chip">BPE tokenization</span>
+            <span class="chip">Interpretability</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">About</h2>
+          <p>
+            I work at the intersection of product-facing machine learning and systems-oriented ML engineering. My strongest interests are neural ranking, recommendation systems, representation learning, LLM reliability, and building clean research artifacts that are easy to inspect, reproduce, and extend.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>What I work on</h3>
+          <p>
+            I’ve worked on customer propensity modeling, channel optimization, anomaly detection, ETA prediction, and recommendation-style modeling problems. I care about the full stack around ML: problem framing, modeling, experimentation, deployment constraints, and real-world trade-offs.
+          </p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">PyTorch</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Experimentation</span>
+            <span class="chip">ML systems</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>What I’m building next</h3>
+          <p>
+            I’m developing a smaller number of deeper public projects instead of many shallow repos. The current arc is language models from scratch, tokenizer tooling, interpretability work, and technical writing that reflects implementation decisions rather than generic explainers.
+          </p>
+          <div class="chips">
+            <span class="chip">LLM from scratch</span>
+            <span class="chip">BPE tokenizer</span>
+            <span class="chip">Research-style writeups</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="experience">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Experience</h2>
+          <p>
+            A concise snapshot of the applied machine learning work that shaped how I think about modeling, decision systems, and engineering trade-offs.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">Current</div>
+          <div>
+            <h3>Data Scientist <span>· Victoria’s Secret &amp; Co.</span></h3>
+            <p>
+              I work on applied ML systems with a strong focus on end-to-end ownership, especially in areas such as recommendation and recommendation systems with sparse data and embedding-driven decision systems.
+            </p>
+            <ul>
+              <li>Built and owned machine learning workflows tied to customer behavior and channel optimization.</li>
+              <li>Worked on embedding pipelines and recommendation-adjacent modeling problems.</li>
+              <li>Balanced business impact with model quality, interpretability, and implementation constraints.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="timeline-item">
+          <div class="timeline-date">Earlier work</div>
+          <div>
+            <h3>Applied ML and analytics systems</h3>
+            <p>
+              Across projects, I’ve worked on LTL ETA prediction, anomaly detection, compliance monitoring, and ranking or recommendation-oriented systems.
+            </p>
+            <ul>
+              <li>Customer purchase propensity modeling using neural ranking ideas and listwise learning.</li>
+              <li>Channel propensity prediction and multi-channel optimization with learned representations.</li>
+              <li>Operational ML work on forecasting, anomaly detection, and model-driven decision pipelines.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Selected projects</h2>
+          <p>
+            These are the projects that best reflect the direction of my portfolio: fewer artifacts, deeper thinking, cleaner execution.
+          </p>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <article class="card">
+          <div class="meta">Flagship build</div>
+          <h3>Language model from scratch</h3>
+          <p>
+            A long-form project spanning tokenization, transformer implementation, training, evaluation, and post-training ideas under realistic compute constraints.
+          </p>
+          <div class="chips">
+            <span class="chip">Transformers</span>
+            <span class="chip">Training systems</span>
+            <span class="chip">Evaluation</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="meta">Library</div>
+          <h3>BPE tokenizer package</h3>
+          <p>
+            A standalone Python package for byte pair encoding, extended from CS336-inspired implementation work into a reusable tokenizer library with tests, benchmarks, and documentation.
+          </p>
+          <div class="chips">
+            <span class="chip">Tokenization</span>
+            <span class="chip">Packaging</span>
+            <span class="chip">Benchmarking</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="meta">Planned research artifact</div>
+          <h3>Interpretability tooling</h3>
+          <p>
+            A future project focused on transformer diagnostics, activations, attribution, and understanding model behavior rather than treating networks as black boxes.
+          </p>
+          <div class="chips">
+            <span class="chip">Interpretability</span>
+            <span class="chip">Diagnostics</span>
+            <span class="chip">Visualization</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="writing">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Writing</h2>
+          <p>
+            I publish implementation-driven notes and project writeups rather than generic tutorial summaries. The goal is to document decisions, trade-offs, and experiments clearly enough that someone else can reproduce or challenge them.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Project writeups</h3>
+          <p>
+            Deep dives on tokenizer design, from-scratch language model components, evaluation choices, and systems trade-offs that emerge while building real artifacts.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Selective technical blogging</h3>
+          <p>
+            I publish when there is an implementation angle, an experiment worth reporting, or a lesson that came from debugging and extending a system.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="contact">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Contact</h2>
+          <p>
+            Replace the links below with your actual profiles, resume, and project pages.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>Links</h3>
+          <div class="chips">
+            <a class="chip" href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="chip" href="https://www.linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="chip" href="mailto:your-email@example.com">Email</a>
+            <a class="chip" href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume PDF</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Next edits</h3>
+          <p>
+            Add exact work-impact metrics from your resume, plug in real project links, and later split your strongest work into dedicated project pages.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Trinanjan Mitra</div>
+      <div>Built as a static landing page for GitHub Pages.</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+
+      toggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+      });
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
